@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="digital-clock.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#080000">
+</head>
+<body>
+    <button id = "settings" onclick="">
+        <img src = "images/setting.png">
+    </button>
+
+    <div id="settings-menu">
+        <h3 id="settings-header">Settings</h3>
+
+        <label>
+            <input type="checkbox" id="reflection-toggle">
+            Hide Reflection
+        </label>
+
+        <label>
+            <input type="checkbox" id="seconds-toggle">
+            Hide Seconds
+        </label>
+
+        <label>
+            <input type="checkbox" id="12-toggle">
+            12 hour format
+        </label>
+
+        <div class="theme-options">
+            
+            <h4>Theme: </h4>
+            <label>
+                <input type="radio" name="theme" value="red" checked>
+                Red
+            </label>
+
+            <label>
+                <input type="radio" name="theme" value="green">
+                Green
+            </label>
+
+            <label>
+                <input type="radio" name="theme" value="blue">
+                Blue
+            </label>
+
+            <label>
+                <input type="radio" name="theme" value="orange">
+                Orange
+            </label>
+        </div>
+
+    </div>
+
+    <div id="clock-container">
+        <div id="clock">
+            <div id="time"></div>
+            <div id="outline"></div>
+            <div id="reflection"> </div>
+        </div>
+    </div>
+    <script src="digital-clock.js"></script> 
+</body>
+</html>

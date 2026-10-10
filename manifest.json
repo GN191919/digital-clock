@@ -1,0 +1,23 @@
+
+{
+    "name": "Digital Clock",
+    "short_name": "Clock",
+    "description": "A customizable digital clock",
+    "start_url": "./digital-clock.html",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#ff0000",
+    "icons": [
+        {
+            "src": "./icons/alarm-clock.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/alarm-clock.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

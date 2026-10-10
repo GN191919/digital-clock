@@ -1,0 +1,181 @@
+@font-face {
+    font-family: "Digital";
+    src: url(fonts/Digital/digital-7-mono.ttf);
+    /*if characters are not fixed width (not monospace
+    the clock keeps jumping left right*/
+}
+
+:root {
+    --main-color: hsl(0, 100%, 50%);
+    --outline-color: hsla(0, 71%, 16%, 0.491);
+    --glow-color: hsl(0, 100%, 50%);
+    --reflection-color: hsla(0, 97%, 47%, 0.167);
+}
+.green {
+    --main-color: hsl(120, 100%, 50%);
+    --outline-color: hsla(120, 71%, 16%, 0.491);
+    --glow-color: hsl(120, 100%, 50%);
+    --reflection-color: hsla(120, 97%, 47%, 0.167);
+}
+
+.blue {
+    --main-color: hsl(197, 100%, 50%);
+    --outline-color: hsla(197, 71%, 16%, 0.491);
+    --glow-color: hsl(197, 100%, 50%);
+    --reflection-color: hsla(197, 97%, 47%, 0.167);
+}
+.orange {
+    --main-color: hsl(24, 100%, 50%);
+    --outline-color: hsla(24, 71%, 16%, 0.491);
+    --glow-color: hsl(24, 100%, 50%);
+    --reflection-color: hsla(24, 97%, 47%, 0.167);
+}
+
+body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin:0;
+    padding: 0;
+    background-color: black;
+    color: var(--main-color);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--main-color);
+}
+
+#clock-container{
+    display: flex;
+    /*aligh hor*/
+    justify-content: center; 
+
+    /*align ver
+    to make the clock sit on the center of the page
+    we increase its container's height
+    otherwise the container - at the top, clock - in its middle*/
+    align-items: center; 
+    height: 100vh;
+
+
+}
+#clock{
+    display: grid;
+    font-family: "Digital";
+    text-align: center;
+
+    font-size: 6rem;
+    /*Both rem and em are relative units for font sizes.
+    rem is relative to the font size of the root element (html)
+    so if html{font-size: 16px;}
+    then 2rem gets us 32px
+
+    em is relative to the font size of the element's parent.
+    */
+
+
+    text-shadow: 2px 2px 6px var(--glow-color);
+    /*hor(right), ver(down) offset, blur, color*/
+
+    /*can add a foggy glass effect:
+    backdrop-filter: blur(5px); - more -> more blur
+    width: 100%;
+    backgroun-color: hsla(0, 0%, 100%, 0.1);
+    */
+
+    
+}
+
+
+
+#reflection{
+    color: var(--reflection-color);
+    font-size: 6rem;
+    transform: perspective(50px) rotateX(-145deg) scaleY(1.3) scaleX(1.7);
+    transform-origin: center;
+}
+#reflection.open {
+    display: none;
+}
+
+#outline, #time { 
+    grid-column: 1; 
+    grid-row: 1; 
+}
+
+#outline{ 
+    color: var(--outline-color); 
+    font-family: "Digital"; 
+    text-align: center; 
+    font-size: 6rem; 
+    z-index: 1;
+    text-shadow: none;
+    user-select: none;
+}
+
+#time {
+    z-index: 2;
+}
+
+::selection{
+    background-color: var(--main-color);
+    color: black;
+}
+
+#settings{
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    text-align: center;
+    font-size: 12px;
+    color: black;
+    padding: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border: 2px solid var(--main-color);
+    border-radius: 7px;
+    margin: 10px 10px 0px 10px;
+    opacity: 0.15;
+    transition: opacity 0.1s ease;
+    
+}
+#settings img {
+    background-color: var(--main-color);
+    border: none;
+
+}
+#settings:hover {
+    opacity: 1;
+    filter: brightness(1.5) drop-shadow(0 0 6px var(--main-color));
+}
+#settings-menu {
+    position: absolute;
+    display: none;
+    font-size: 16px;
+}
+#settings-menu.open {
+    display: block;
+}
+/*to all children*/
+#settings-menu > * {
+    padding: 3px 10px 0px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 10px;
+    margin-bottom: 22px;
+}
+
+.theme-options {
+    align-items: center;
+}
+
+body.cursor-hidden {
+    cursor: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
